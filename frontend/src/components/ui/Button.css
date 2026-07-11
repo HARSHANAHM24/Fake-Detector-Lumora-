@@ -1,0 +1,54 @@
+.lumora-button {
+  border: none;
+  border-radius: var(--radius-medium);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.lumora-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--primary-hover);
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--text-primary);
+}
+
+.outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.medium {
+  padding: 12px 24px;
+}
+
+.large {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+.lumora-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

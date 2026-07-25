@@ -1,23 +1,27 @@
+import Navbar from "../../components/layout/Navbar";
+import Hero from "./sections/Hero";
+import Features from "../../components/sections/Features";
+import HowItWorks from "../../components/sections/HowItWorks";
+import WhyLumora from "../../components/sections/WhyLumora";
+
 import "./Welcome.css";
 
-import Navbar from "../../components/layout/Navbar";
+function Welcome() {
+  return (
+    <main className="welcome-page">
 
-import Hero from "./sections/Hero";
+      <Navbar/>  
 
-function Welcome(){
+      <Hero />
 
-return(
+      <Features />
 
-<>
+      <HowItWorks />
 
-<Navbar/>
+      <WhyLumora />
 
-<Hero/>
-
-</>
-
-);
-
+    </main>
+  );
 }
 
 export default Welcome;

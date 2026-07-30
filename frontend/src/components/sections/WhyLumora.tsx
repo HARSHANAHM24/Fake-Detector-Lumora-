@@ -2,7 +2,7 @@ import "./WhyLumora.css";
 
 function WhyLumora() {
   return (
-    <section className="why-lumora">
+    <section id="why-lumora" className="why-lumora">
 
       <div className="why-lumora-content">
 

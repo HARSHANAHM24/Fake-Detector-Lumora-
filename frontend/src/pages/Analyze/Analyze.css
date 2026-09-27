@@ -11,6 +11,7 @@
     );
 }
 
+
 .analyze-hero {
   max-width: 800px;
 
@@ -18,6 +19,7 @@
 
   text-align: center;
 }
+
 
 .analyze-tag {
   margin-bottom: 18px;
@@ -29,6 +31,7 @@
   font-weight: 600;
 }
 
+
 .analyze-hero h1 {
   margin-bottom: 20px;
 
@@ -39,6 +42,7 @@
   line-height: 1.2;
 }
 
+
 .analyze-description {
   color: #6d6d82;
 
@@ -46,6 +50,7 @@
 
   line-height: 1.7;
 }
+
 
 .investigation-box {
   max-width: 850px;
@@ -64,6 +69,7 @@
     0 20px 50px rgba(91, 76, 150, 0.08);
 }
 
+
 .input-section {
   display: flex;
 
@@ -72,6 +78,7 @@
   gap: 12px;
 }
 
+
 .input-section label {
   color: #4b5ca8;
 
@@ -79,6 +86,7 @@
 
   font-weight: 600;
 }
+
 
 .input-section textarea {
   width: 100%;
@@ -110,12 +118,14 @@
     box-shadow 0.3s ease;
 }
 
+
 .input-section textarea:focus {
   border-color: #a9a1e8;
 
   box-shadow:
     0 0 0 4px rgba(169, 161, 232, 0.12);
 }
+
 
 .investigate-button {
   display: block;
@@ -148,6 +158,7 @@
     background 0.3s ease;
 }
 
+
 .investigate-button:hover {
   transform: translateY(-2px);
 
@@ -156,6 +167,7 @@
   box-shadow:
     0 10px 25px rgba(91, 76, 150, 0.18);
 }
+
 
 .upload-divider {
   display: flex;
@@ -173,6 +185,7 @@
   font-weight: 600;
 }
 
+
 .upload-divider::before,
 .upload-divider::after {
   content: "";
@@ -184,6 +197,7 @@
   background: #ebe7f5;
 }
 
+
 .upload-options {
   display: grid;
 
@@ -191,6 +205,7 @@
 
   gap: 20px;
 }
+
 
 .upload-card {
   display: flex;
@@ -220,6 +235,7 @@
     box-shadow 0.3s ease;
 }
 
+
 .upload-card:hover {
   transform: translateY(-4px);
 
@@ -231,9 +247,11 @@
     0 10px 25px rgba(91, 76, 150, 0.08);
 }
 
+
 .upload-icon {
   font-size: 2rem;
 }
+
 
 .upload-title {
   color: #4b5ca8;
@@ -243,11 +261,93 @@
   font-weight: 600;
 }
 
+
 .upload-description {
   color: #858397;
 
   font-size: 0.9rem;
 }
+
+
+/* Hidden file inputs */
+
+.hidden-file-input {
+  display: none;
+}
+
+
+/* Selected file */
+
+.selected-file {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 20px;
+
+  padding: 16px 18px;
+
+  border: 1px solid #e2dcf5;
+
+  border-radius: 16px;
+
+  background: #f9f7ff;
+}
+
+
+.selected-file-icon {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 42px;
+
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: #eeeaff;
+
+  font-size: 1.3rem;
+}
+
+
+.selected-file-info {
+  min-width: 0;
+}
+
+
+.selected-file-info strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #4b5ca8;
+
+  font-size: 0.9rem;
+}
+
+
+.selected-file-info p {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #77758a;
+
+  font-size: 0.85rem;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
 
 @media (max-width: 700px) {
 
@@ -255,13 +355,16 @@
     padding: 80px 6%;
   }
 
+
   .analyze-hero h1 {
     font-size: 2.3rem;
   }
 
+
   .investigation-box {
     padding: 25px;
   }
+
 
   .upload-options {
     grid-template-columns: 1fr;

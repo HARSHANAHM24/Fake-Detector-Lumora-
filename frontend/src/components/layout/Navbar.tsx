@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Navbar.css";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen((previousValue) => !previousValue);
@@ -29,6 +33,12 @@ function Navbar() {
     });
   };
 
+  const goToAnalyze = () => {
+    closeMenu();
+
+    navigate("/analyze");
+  };
+
   return (
     <nav className="navbar">
       <button
@@ -38,14 +48,21 @@ function Navbar() {
         aria-label="Go to the top of the Lumora page"
       >
         <span className="logo-icon">🌸</span>
-        <span className="logo-text">Lumora</span>
+
+        <span className="logo-text">
+          Lumora
+        </span>
       </button>
 
       <button
         type="button"
         className={`menu-toggle ${isMenuOpen ? "open" : ""}`}
         onClick={toggleMenu}
-        aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-label={
+          isMenuOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        }
         aria-expanded={isMenuOpen}
         aria-controls="navbar-menu"
       >
@@ -73,7 +90,7 @@ function Navbar() {
             <button
               type="button"
               className="nav-link"
-              onClick={() => scrollToSection("features")}
+              onClick={goToAnalyze}
             >
               Investigate
             </button>

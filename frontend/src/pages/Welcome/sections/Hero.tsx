@@ -1,9 +1,15 @@
 import "./Hero.css";
 
-import Button from "../../../components/ui/Button";
+import Lumi from "../../../components/lumi/Lumi";
 
-function Hero() {
-  const scrollToFeatures = () => {
+interface HeroProps {
+  onStartInvestigation: () => void;
+}
+
+function Hero({
+  onStartInvestigation,
+}: HeroProps) {
+  const handleLearnMore = () => {
     document.getElementById("features")?.scrollIntoView({
       behavior: "smooth",
     });
@@ -12,60 +18,49 @@ function Hero() {
   return (
     <section className="hero">
 
-      <div className="hero-left">
+      <div className="hero-content">
 
-        <p className="hero-tag">
+        <div className="hero-badge">
           🌸 AI-Powered Evidence Investigation
-        </p>
+        </div>
 
-        <h1>
+        <h1 className="hero-title">
           Discover Truth
           <br />
           with Confidence
         </h1>
 
         <p className="hero-description">
-          Verify claims, images and videos using
-          explainable AI, trusted sources and
-          transparent reasoning.
+          Verify claims, images and videos using explainable AI,
+          trusted sources and transparent reasoning.
         </p>
 
-        <div className="hero-buttons">
+        <div className="hero-actions">
 
-          <Button>
+          <button
+            type="button"
+            className="hero-primary-btn"
+            onClick={onStartInvestigation}
+          >
             Start Investigation
-          </Button>
+          </button>
 
-          <Button
-            variant="secondary"
-            onClick={scrollToFeatures}
+          <button
+            type="button"
+            className="hero-secondary-btn"
+            onClick={handleLearnMore}
           >
             Learn More
-          </Button>
+          </button>
 
         </div>
 
       </div>
 
-      <div className="hero-right">
 
-        <div className="lumi-card">
+      <div className="hero-visual">
 
-          <div className="lumi-avatar">
-            🤖
-          </div>
-
-          <h2>Lumi</h2>
-
-          <p>
-            Hello!
-            <br />
-            I'm your AI research companion.
-            <br />
-            Let's discover the truth together.
-          </p>
-
-        </div>
+        <Lumi />
 
       </div>
 

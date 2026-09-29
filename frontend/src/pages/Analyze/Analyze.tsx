@@ -1,4 +1,9 @@
-import { useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+} from "react";
 
 import InvestigationResult from "../../components/investigation/InvestigationResult";
 
@@ -14,6 +19,12 @@ function Analyze() {
   const [selectedVideo, setSelectedVideo] =
     useState<File | null>(null);
 
+  const [imagePreviewUrl, setImagePreviewUrl] =
+    useState("");
+
+  const [videoPreviewUrl, setVideoPreviewUrl] =
+    useState("");
+
   const imageInputRef =
     useRef<HTMLInputElement>(null);
 
@@ -21,8 +32,53 @@ function Analyze() {
     useRef<HTMLInputElement>(null);
 
 
+  /*
+   * Create a temporary browser URL
+   * whenever an image is selected.
+   */
+  useEffect(() => {
+    if (!selectedImage) {
+      setImagePreviewUrl("");
+
+      return;
+    }
+
+    const previewUrl =
+      URL.createObjectURL(selectedImage);
+
+    setImagePreviewUrl(previewUrl);
+
+    return () => {
+      URL.revokeObjectURL(previewUrl);
+    };
+  }, [selectedImage]);
+
+
+  /*
+   * Create a temporary browser URL
+   * whenever a video is selected.
+   */
+  useEffect(() => {
+    if (!selectedVideo) {
+      setVideoPreviewUrl("");
+
+      return;
+    }
+
+    const previewUrl =
+      URL.createObjectURL(selectedVideo);
+
+    setVideoPreviewUrl(previewUrl);
+
+    return () => {
+      URL.revokeObjectURL(previewUrl);
+    };
+  }, [selectedVideo]);
+
+
   const handleInvestigate = () => {
-    const trimmedText = investigationText.trim();
+    const trimmedText =
+      investigationText.trim();
 
     if (trimmedText === "") {
       return;
@@ -33,7 +89,7 @@ function Analyze() {
 
 
   const handleTextChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
+    event: ChangeEvent<HTMLTextAreaElement>
   ) => {
     setInvestigationText(event.target.value);
 
@@ -52,7 +108,7 @@ function Analyze() {
 
 
   const handleImageChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
 
@@ -63,12 +119,13 @@ function Analyze() {
     setSelectedImage(file);
 
     setSelectedVideo(null);
+
     setSubmittedClaim("");
   };
 
 
   const handleVideoChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
 
@@ -79,6 +136,7 @@ function Analyze() {
     setSelectedVideo(file);
 
     setSelectedImage(null);
+
     setSubmittedClaim("");
   };
 
@@ -203,11 +261,16 @@ function Analyze() {
         />
 
 
-        {selectedImage && (
+        {selectedImage && imagePreviewUrl && (
           <div className="selected-file">
 
-            <div className="selected-file-icon">
-              📷
+            <div className="file-preview">
+
+              <img
+                src={imagePreviewUrl}
+                alt={`Preview of ${selectedImage.name}`}
+              />
+
             </div>
 
             <div className="selected-file-info">
@@ -226,11 +289,19 @@ function Analyze() {
         )}
 
 
-        {selectedVideo && (
+        {selectedVideo && videoPreviewUrl && (
           <div className="selected-file">
 
-            <div className="selected-file-icon">
-              🎥
+            <div className="file-preview">
+
+              <video
+                src={videoPreviewUrl}
+                controls
+              >
+                Your browser does not support video
+                playback.
+              </video>
+
             </div>
 
             <div className="selected-file-info">
